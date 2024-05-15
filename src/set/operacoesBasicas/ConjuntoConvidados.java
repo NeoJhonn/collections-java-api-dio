@@ -58,8 +58,5 @@ public class ConjuntoConvidados {
 
         // imprimir convidados
         conjuntoConvidados.exibirConvidados();
-
-
-
     }
 }
