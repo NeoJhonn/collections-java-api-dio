@@ -26,26 +26,20 @@ public class ContagemPalavras {
         System.out.println(this.contagemMap);
     }
 
-    public String encontrarPalavraMaisFrequente() {
+    public Map.Entry<String, Integer> encontrarPalavraMaisFrequente() {
         int maiorContagem = Integer.MIN_VALUE;
-        String palavra = "";
+        Map.Entry<String, Integer> palavra = null;
 
         if (!this.contagemMap.isEmpty()) {
-            for (Integer c: this.contagemMap.values()) {
-                if (c > maiorContagem) {
-                    maiorContagem = c;
-                }
-            }
-
-            for (String p: this.contagemMap.keySet()) {
-                if (this.contagemMap.get(p) == maiorContagem) {
-                    palavra = p;
+            for (Map.Entry<String, Integer> entry: this.contagemMap.entrySet()) {
+                if (entry.getValue() > maiorContagem) {
+                    maiorContagem = entry.getValue();
+                    palavra = entry;
                 }
             }
         }
 
-
-        return "Palavara mais frequënte= "+ palavra +", contagem= " + maiorContagem;
+        return palavra;
     }
 
     public static void main(String[] args) {
@@ -71,7 +65,9 @@ public class ContagemPalavras {
         System.out.println();
 
         // Exibir palavra mais frequënte
-        System.out.println(contagemPalavras.encontrarPalavraMaisFrequente());
+        System.out.println("Palavara mais frequënte= "+
+                contagemPalavras.encontrarPalavraMaisFrequente().getKey()
+                +", contagem= " + contagemPalavras.encontrarPalavraMaisFrequente().getValue());
 
     }
 }
